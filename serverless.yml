@@ -1,0 +1,14 @@
+service: futbol-bot
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  getMatches:
+    handler: index.handler
+    events:
+      - eventBridge:
+          schedule: cron(0 10 * * ? *)
