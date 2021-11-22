@@ -161,7 +161,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/futbol-bot/dev/1636688901507-2021-11-12T03:48:21.507Z/futbol-bot.zip"
+          "S3Key": "serverless/futbol-bot/dev/1637533031884-2021-11-21T22:17:11.884Z/futbol-bot.zip"
         },
         "Handler": "index.handler",
         "Runtime": "nodejs14.x",
@@ -179,14 +179,14 @@
         "GetMatchesLogGroup"
       ]
     },
-    "GetMatchesLambdaVersionWlUoAhEWQo3aabHkFL07js9xyhn7XVMdZLbq4AHrI4": {
+    "GetMatchesLambdaVersionry1MBmDyDUhrzghIWfQ5rh47n28pkfROYHsHepDGF8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetMatchesLambdaFunction"
         },
-        "CodeSha256": "NZwHks7jntSWtRsz5k0rYKGFItvBtjb2ax2f0IkDcpY="
+        "CodeSha256": "TPqux4xLcmhr/dvb6UFg91PCNI7kA0tmBxxKnuJnXuw="
       }
     },
     "GetMatchesCustomEventBridge1": {
@@ -313,7 +313,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/futbol-bot/dev/1636688901507-2021-11-12T03:48:21.507Z/custom-resources.zip"
+          "S3Key": "serverless/futbol-bot/dev/1637533031884-2021-11-21T22:17:11.884Z/custom-resources.zip"
         },
         "FunctionName": "futbol-bot-dev-custom-resource-event-bridge",
         "Handler": "eventBridge/handler.handler",
@@ -344,7 +344,7 @@
     "GetMatchesLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetMatchesLambdaVersionWlUoAhEWQo3aabHkFL07js9xyhn7XVMdZLbq4AHrI4"
+        "Ref": "GetMatchesLambdaVersionry1MBmDyDUhrzghIWfQ5rh47n28pkfROYHsHepDGF8"
       },
       "Export": {
         "Name": "sls-futbol-bot-dev-GetMatchesLambdaFunctionQualifiedArn"

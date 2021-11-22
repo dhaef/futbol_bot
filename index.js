@@ -33,6 +33,7 @@ const getMatches = async () => {
     { headers: { 'X-Auth-Token': process.env.FOOTBALL_DATA_TOKEN } }
   );
   const data = await res.json();
+  console.log(data);
   data.matches.forEach((match) => {
     // console.log(match.competition);
     if (match.competition.id === 2021) {
@@ -169,8 +170,8 @@ function getTwitterHandle(name) {
   }
 }
 
-const handler = () => {
-  const res = getMatches();
+const handler = async () => {
+  const res = await getMatches();
   return res;
 };
 
