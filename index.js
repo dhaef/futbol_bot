@@ -13,7 +13,8 @@ const userClient = new TwitterApi({
 // msgs: array of messages
 const tweetThread = async (msgs) => {
   try {
-    await userClient.v2.tweetThread(msgs);
+    const { data } = await userClient.v2.tweetThread(msgs);
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -22,16 +23,16 @@ const tweetThread = async (msgs) => {
 const handler = async () => {
   try {
     const competitions = await matchesByCompetition();
-    const tweetsPosted = [];
 
-    Promise.all(
+    const tweetsPosted = Promise.all(
       Object.entries(competitions).map(async ([key, value]) => {
         if (value?.length > 0) {
           const tweets = await writeTweet(key, value);
-          console.log(tweets);
-          await tweetThread(tweets);
-          tweetsPosted.push(tweets);
+          console.log(`Tweets`, { tweets });
+          const tweet = await tweetThread(tweets);
+          return tweet;
         }
+        return;
       })
     );
 
