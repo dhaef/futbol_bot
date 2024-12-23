@@ -3,15 +3,15 @@ require('dotenv').config();
 const { matchesByCompetition } = require('./getMatches');
 const { writeTweet } = require('./writeTweet');
 
-const userClient = new TwitterApi({
-  appKey: process.env.APP_KEY,
-  appSecret: process.env.APP_SECRET,
-  accessToken: process.env.ACCESS_TOKEN_KEY,
-  accessSecret: process.env.ACCESS_TOKEN_SECRET,
-});
-
 // msgs: array of messages
 const tweetThread = async (msgs) => {
+  const userClient = new TwitterApi({
+    appKey: process.env.APP_KEY,
+    appSecret: process.env.APP_SECRET,
+    accessToken: process.env.ACCESS_TOKEN_KEY,
+    accessSecret: process.env.ACCESS_TOKEN_SECRET,
+  });
+
   try {
     const { data } = await userClient.v2.tweetThread(msgs);
     return data;
@@ -20,7 +20,7 @@ const tweetThread = async (msgs) => {
   }
 };
 
-const handler = async () => {
+(async () => {
   try {
     const competitions = await matchesByCompetition();
 
@@ -41,8 +41,4 @@ const handler = async () => {
     console.log(`Error: ${error.message}`);
     return `Error: ${error.message}`;
   }
-};
-
-module.exports = {
-  handler,
-};
+})();
