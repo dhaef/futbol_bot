@@ -1,15 +1,15 @@
 const { TwitterApi } = require('twitter-api-v2');
-require('dotenv').config();
 const { matchesByCompetition } = require('./getMatches');
 const { writeTweet } = require('./writeTweet');
+import creds from './creds.json';
 
 // msgs: array of messages
 const tweetThread = async (msgs) => {
   const userClient = new TwitterApi({
-    appKey: process.env.APP_KEY,
-    appSecret: process.env.APP_SECRET,
-    accessToken: process.env.ACCESS_TOKEN_KEY,
-    accessSecret: process.env.ACCESS_TOKEN_SECRET,
+    appKey: creds.APP_KEY,
+    appSecret: creds.APP_SECRET,
+    accessToken: creds.ACCESS_TOKEN_KEY,
+    accessSecret: creds.ACCESS_TOKEN_SECRET,
   });
 
   try {

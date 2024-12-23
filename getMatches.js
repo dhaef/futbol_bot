@@ -1,5 +1,5 @@
-require('dotenv').config();
 const axios = require('axios');
+import creds from './creds.json';
 
 const matchesByCompetition = async () => {
   const comps = {
@@ -20,7 +20,7 @@ const matchesByCompetition = async () => {
   }-${day.toString().length === 1 ? `0${day}` : day}`;
   const { data } = await axios.get(
     `https://api.football-data.org/v2/matches?competitions=2021,2014,2019,2002,2001,2015&dateFrom=${date}&dateTo=${date}&status=SCHEDULED`,
-    { headers: { 'X-Auth-Token': process.env.FOOTBALL_DATA_TOKEN } }
+    { headers: { 'X-Auth-Token': creds.FOOTBALL_DATA_TOKEN } }
   );
 
   data.matches.forEach((match) => {
