@@ -1,7 +1,7 @@
 const { TwitterApi } = require('twitter-api-v2');
 const { matchesByCompetition } = require('./getMatches');
 const { writeTweet } = require('./writeTweet');
-import creds from './creds.json';
+const creds = require('./creds.json');
 
 // msgs: array of messages
 const tweetThread = async (msgs) => {

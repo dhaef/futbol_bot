@@ -1,5 +1,5 @@
 const axios = require('axios');
-import creds from './creds.json';
+const creds = require('./creds.json');
 
 const matchesByCompetition = async () => {
   const comps = {
