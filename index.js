@@ -24,20 +24,19 @@ const tweetThread = async (msgs) => {
   try {
     const competitions = await matchesByCompetition();
 
-    // const tweetsPosted = Promise.all(
-    //   Object.entries(competitions).map(async ([key, value]) => {
-    //     if (value?.length > 0) {
-    //       const tweets = await writeTweet(key, value);
-    //       console.log(`Tweets`, { tweets });
-    //       const tweet = await tweetThread(tweets);
-    //       return tweet;
-    //     }
-    //     return;
-    //   })
-    // );
+    const tweetsPosted = Promise.all(
+      Object.entries(competitions).map(async ([key, value]) => {
+        if (value?.length > 0) {
+          const tweets = await writeTweet(key, value);
+          console.log(`Tweets`, { tweets });
+          const tweet = await tweetThread(tweets);
+          return tweet;
+        }
+        return;
+      })
+    );
 
-    // return tweetsPosted;
-    await tweetThread(['test']);
+    return tweetsPosted;
   } catch (error) {
     console.log(`Error: ${error.message}`);
     return `Error: ${error.message}`;
