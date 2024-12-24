@@ -25,7 +25,7 @@ const tweetThread = async (msgs) => {
     const competitions = await matchesByCompetition();
     let competitionsWithMatches = 0;
 
-    await Promise.all(
+    const tweetsPosted = Promise.all(
       Object.entries(competitions).map(async ([competition, matches]) => {
         if (matches?.length > 0) {
           const tweets = await writeTweet(competition, matches);
@@ -43,10 +43,10 @@ const tweetThread = async (msgs) => {
     }
 
     console.log(
-      `futbol bot ran successfully, found ${competitionsWithMatches} competition(s) with matches`
+      `${new Date().toISOString()}: futbol bot ran successfully, found ${competitionsWithMatches} competition(s) with matches`
     );
   } catch (error) {
-    console.log(`Error: ${error.message}`);
+    console.log(`${new Date().toISOString()}: Error: ${error.message}`);
     return `Error: ${error.message}`;
   }
 })();

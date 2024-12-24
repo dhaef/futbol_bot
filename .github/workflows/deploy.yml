@@ -25,3 +25,14 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           source: '.'
           target: 'futbol_bot'
+
+      - name: Executing remote command
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          KEY: ${{ secrets.SSHKEY }}
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+          script_stop: true
+          script: |
+            chmod +x /home/dhaef/futbol_bot/run.sh
