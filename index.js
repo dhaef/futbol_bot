@@ -25,7 +25,7 @@ const tweetThread = async (msgs) => {
     const competitions = await matchesByCompetition();
     let competitionsWithMatches = 0;
 
-    const tweetsPosted = Promise.all(
+    await Promise.all(
       Object.entries(competitions).map(async ([competition, matches]) => {
         if (matches?.length > 0) {
           const tweets = await writeTweet(competition, matches);
